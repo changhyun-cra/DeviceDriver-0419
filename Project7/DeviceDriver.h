@@ -1,6 +1,7 @@
 #pragma once
 #include "FlashMemoryDevice.h"
 #include <stdexcept>
+#include <string>
 
 class DeviceDriver
 {
@@ -14,5 +15,11 @@ protected:
 };
 
 class ReadFailException : public std::exception {
+public:
+    ReadFailException(std::string msg) : exception{ msg.c_str() } {}
+};
 
+class WriteFailException : public std::exception {
+public:
+    WriteFailException(std::string msg) : exception{ msg.c_str() } {}
 };
